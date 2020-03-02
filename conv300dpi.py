@@ -10,7 +10,7 @@ def main():
     parser = optparse.OptionParser(usage='%prog [-o <out_dir>] [-q] <dir>')
     parser.add_option('-o', '--output-directory', dest='out_dir',
                       help='The directory to save the images')
-    parser.add_option('-q', '--quiet', action='store_true', dest='verbose',
+    parser.add_option('-q', '--quiet', action='store_false', dest='verbose',
                       default=True, help="Don't print status messages")
     (options, args) = parser.parse_args()
 
@@ -36,7 +36,7 @@ def main():
         img = Image.open(os.path.join(args[0], file))
         img.save(os.path.join(save_dir, oname), dpi=(300.0, 300.0))
         if (options.verbose):
-            print("[+] Converted %s" %fname)
+            print("[+] Converted " + fname)
 
 if __name__ == '__main__':
     main()
